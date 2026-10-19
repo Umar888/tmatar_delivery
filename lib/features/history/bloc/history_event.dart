@@ -1,0 +1,7 @@
+part of 'history_bloc.dart';
+
+@freezed
+sealed class HistoryEvent with _$HistoryEvent {
+  const factory HistoryEvent.started() = _Started;
+  const factory HistoryEvent.filterChanged(HistoryFilter filter) = _FilterChanged;
+}
