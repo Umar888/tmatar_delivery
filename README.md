@@ -17,6 +17,12 @@ _Taaza Har Baar, Seedha Ghar Tak_
 
 Riders log in with their phone number, go online, accept nearby orders, follow a real road route to the store, check every item at pickup, deliver against a customer signature and keep track of what they earned. The whole app runs against a built-in mock backend, so it works out of the box with no server or API keys.
 
+## Demo
+
+[![Watch the demo video](docs/screenshots/demo_preview.png)](https://github.com/Umar888/tmatar_delivery/blob/main/docs/demo.mp4)
+
+▶️ **[Watch the full app walkthrough](https://github.com/Umar888/tmatar_delivery/blob/main/docs/demo.mp4)** (2 min) &nbsp;·&nbsp; 📦 **[Download the Android APK](https://github.com/Umar888/tmatar_delivery/releases/latest)**
+
 ## Screenshots
 
 | Splash | Login | OTP | Home | Orders |
@@ -170,6 +176,23 @@ On the iOS simulator, set a location and grant permission first so no system ale
 xcrun simctl location booted set 22.3080,73.1795
 xcrun simctl privacy booted grant location com.tmatarmart.tmatarDelivery
 ```
+
+## Release build
+
+```bash
+flutter build apk --release
+```
+
+Release signing reads `android/key.properties`, which is kept out of git:
+
+```properties
+storePassword=...
+keyPassword=...
+keyAlias=upload
+storeFile=upload-keystore.jks
+```
+
+Without that file the release build falls back to debug signing, so a fresh clone still builds. `android/app/proguard-rules.pro` keeps the classes `shared_preferences` reaches through JNI, which R8 would otherwise strip.
 
 ## Code generation
 

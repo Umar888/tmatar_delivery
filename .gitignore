@@ -50,3 +50,11 @@ app.*.map.json
 # Local notes
 CLAUDE.md
 .claude/
+
+# Release signing, never commit
+/android/key.properties
+*.jks
+*.keystore
+
+# Raw screen recordings, docs/demo.mp4 is the compressed copy
+docs/*.mov
